@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [emails, setEmails] = useState([]);
+  // emails: ['mary@gmail.com', 'joseph@gmail.com'];
+  const fakeEmailList1 = 'jose@yahoo.com';
+  const fakeEmailList2 = ['mary@gmail.com', 'joseph@gmail.com'];
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="email" placeholder="Email"></input>
+      <button type="button">Add Email</button>
+      <p>{fakeEmailList1}</p>
     </div>
   );
 }
