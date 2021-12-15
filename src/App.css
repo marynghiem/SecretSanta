@@ -1,38 +1,18 @@
 .App {
   text-align: center;
-  
-}
-titleName{
-  text-align:center;
-  
-}
-.container{
-  max-width:500px;
-  margin: 80px auto 0;
-  padding:30px;
-  border-radius: 15px;
-  background-color: rgb(243, 105, 105);
-  position:relative;
 }
 
-html {height: 100%;
-  background: linear-gradient(pink, #9198e5);}
-
-
-.unorderedListDiv{
-  text-align: center;
-
+html {
+  height: 100%;
+  background: linear-gradient(#a5adfc, #fff3f3);
 }
 
-ul {
-  display: inline-block; 
+ol {
+  display: inline-block;
   text-align: left;
 }
 
-
-.App-link {
-  color: #61dafb;
+body {
+  font-family: "Josefin Sans", sans-serif;
+  color: #f9f9f9;
 }
-
-
-
