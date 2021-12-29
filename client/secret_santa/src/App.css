@@ -1,0 +1,46 @@
+.App {
+  text-align: center;
+}
+
+html {
+  height: 100%;
+  background: linear-gradient(#a5adfc, #fff3f3);
+}
+
+ol {
+  display: inline-block;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #f9f9f9;
+}
+
+h1,
+h3 {
+  font-family: "Lobster Two", cursive;
+}
+
+::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+input {
+  width: 97%;
+  background: transparent;
+  margin-bottom: 10px;
+  height: 40px;
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 0;
+  border-bottom: 1px solid #f9f9f9;
+  display: block;
+  padding: 3px;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+}
