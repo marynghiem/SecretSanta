@@ -39,8 +39,15 @@ export const SecretSanta = () => {
       </p>
 
       <div class="secretSantaParticipantForm">
-        <h3>Participants</h3>
-        <input type="text" class="nameInput" placeholder="Name" onChange={onNameChange} value={currentName}></input>
+        <h3>Participants Information</h3>
+        <input
+          type="text"
+          class="nameInput"
+          placeholder="Name"
+          maxlength="20"
+          onChange={onNameChange}
+          value={currentName}
+        ></input>
         <input
           type="email"
           class="emailInput"
@@ -56,6 +63,7 @@ export const SecretSanta = () => {
       </div>
 
       <div class="participantsList">
+        <h3>Participants List</h3>
         <ol class="namesList">
           {names.map((name, index) => (
             <li key={index} class="nameList">
@@ -66,13 +74,16 @@ export const SecretSanta = () => {
         <ol class="emailsList">
           {emails.map((email, index) => (
             <li key={index} class="emailList">
-              {email}
+              <span class="emailText">{email}</span>
               <button class="button" id="deleteButton" onClick={() => removeParticipant(index)}>
                 Delete
               </button>
             </li>
           ))}
         </ol>
+        <button class="button" id="PairUpButton">
+          Pair up!
+        </button>
       </div>
     </div>
   );
