@@ -80,7 +80,7 @@ export const SecretSanta = () => {
           type="text"
           className="nameInput"
           placeholder="Name"
-          maxlength="20"
+          maxLength="20"
           onChange={onNameChange}
           value={currentName}
         ></input>
