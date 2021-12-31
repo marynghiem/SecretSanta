@@ -4,7 +4,6 @@ function shuffleParticipants(arr) {
   let newSecondList;
   let allPairingFound = false;
   while (!allPairingFound) {
-    console.log("pairing");
     newSecondList = shuffleArray(secondList);
     for (let i = 0; i < firstList.length; i++) {
       if (firstList[i].name !== newSecondList[i].name) {

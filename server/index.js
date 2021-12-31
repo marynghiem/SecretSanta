@@ -2,6 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { shuffleParticipants } = require("./SecretSantaShuffler.js");
+const { sendEmail } = require("./EmailSender");
 
 const PORT = process.env.PORT || 3001;
 
@@ -11,12 +12,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.post("/api", (req, res) => {
-  // Run your list shuffling function here
-  console.log(req.body);
-  console.log("test");
-  let secretSantaShuffled = shuffleParticipants(req.body);
-  console.log(secretSantaShuffled);
-  res.json({ message: "Hello from server!" });
+  const originalList = req.body;
+  const shuffledList = shuffleParticipants(req.body);
+
+  for (let i = 0; i < originalList.length; i++) {
+    sendEmail(originalList[i].email, shuffledList[i].name);
+  }
+
+  res.json({ message: "Emails sent successfully!" });
 });
 
 app.listen(PORT, () => {
