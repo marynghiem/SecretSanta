@@ -8,8 +8,16 @@ export const SecretSanta = () => {
   const [currentName, setCurrentName] = useState("");
 
   const addParticipant = () => {
-    setNames([...names, currentName]);
-    setEmails([...emails, currentEmail]);
+    if (isAddParticipantButtonDisabled()) {
+      alert("Name or email already exists.");
+    } else if (isAddParticipantEmailInvalid()) {
+      alert("Invalid email.");
+    } else {
+      setNames([...names, currentName]);
+      setEmails([...emails, currentEmail]);
+      setCurrentEmail("");
+      setCurrentName("");
+    }
   };
 
   const onEmailInputChange = (event) => {
@@ -27,6 +35,22 @@ export const SecretSanta = () => {
     setEmails((prev) => {
       return prev.filter((email, index) => index !== targetIndex);
     });
+  };
+
+  const clearParticipants = () => {
+    setNames([]);
+    setEmails([]);
+  };
+
+  const isAddParticipantEmailInvalid = () => {
+    let regExEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    let EmailsWereAMatch = regExEmail.test(currentEmail);
+    if (EmailsWereAMatch) {
+      //if emailswereamatch is true, this returns false because isaddparticipantemailinvalid is false
+      return false;
+    } else {
+      return true;
+    }
   };
 
   const isAddParticipantButtonDisabled = () => {
@@ -92,14 +116,11 @@ export const SecretSanta = () => {
           placeholder="Email"
         ></input>
         <div className="buttonContainer">
-          <button
-            className="button"
-            id="addButton"
-            type="button"
-            disabled={isAddParticipantButtonDisabled()}
-            onClick={addParticipant}
-          >
+          <button className="button" id="addButton" type="button" onClick={addParticipant}>
             Add Participant
+          </button>
+          <button className="button" id="clearButton" type="button" onClick={clearParticipants}>
+            Clear Participants List
           </button>
         </div>
       </div>
