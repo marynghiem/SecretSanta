@@ -4,10 +4,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { shuffleParticipants } = require("./SecretSantaShuffler.js");
 const { sendEmail } = require("./EmailSender");
+const path = require("path");
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
+
+const publicPath = path.join(__dirname, "..", "client/build");
+app.use(express.static(publicPath));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -25,4 +29,8 @@ app.post("/api", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(publicPath, "index.html"));
 });
